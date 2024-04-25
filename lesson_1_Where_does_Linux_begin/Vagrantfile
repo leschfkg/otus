@@ -24,7 +24,10 @@ end
 end
   config.vm.provision "shell", inline: <<-SHELL
     apt update -y && apt upgrade -y
+    apt install ncdu htop tree mc vim traceroute net-tools tcpdump curl wget git -y
     cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys
+    cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
     timedatectl set-timezone Europe/Moscow
+    reboot
   SHELL
 end
