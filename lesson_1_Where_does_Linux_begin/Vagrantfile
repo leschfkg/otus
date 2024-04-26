@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
     vm.check_guest_additions=false
   config.vm.box = "ubuntu/jammy64"
   config.vm.box_check_update = false
+  config.vm.synced_folder "C:\\Users\\levitskyav\\Documents\\share_vm", "/home/vagrant/data"
 end
 
 (0..$hosts-1).each do |i|
@@ -17,7 +18,7 @@ end
         node.vm.hostname = "otus-node-#{i}.local"
         node.vm.disk :disk, size: "50GB", primary: true
         (1..$disk).each do |d|
-          node.vm.disk :disk, size: "20GB", name: "disk-#{d}" 
+          node.vm.disk :disk, size: "20GB", name: "disk-#{d}"
         end
     end
 
