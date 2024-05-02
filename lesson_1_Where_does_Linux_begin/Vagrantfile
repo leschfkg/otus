@@ -1,6 +1,6 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-$hosts = 3
+$hosts = 4
 $disk = 3
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vm|
@@ -10,9 +10,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
   config.vm.box_check_update = false
   config.vm.synced_folder "C:\\Users\\levitskyav\\Documents\\share_vm", "/home/vagrant/data" # Введите путь к директории на вашей локальной машине.
-                                                                                             # для подключения шары, после vagrant up нужно выполнить
-                                                                                             # vagrant reload, так как подклюится только после установки
-                                                                                             # VBoxGuestAdditions
 end
 
 (0..$hosts-1).each do |i|
@@ -28,10 +25,9 @@ end
 end
   config.vm.provision "shell", inline: <<-SHELL
     apt update -y && apt upgrade -y
-    apt install ncdu htop tree mc vim traceroute net-tools tcpdump curl wget git -y
     cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys
     cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
-    cd /vagrant/VBoxGuestAdditions && sh ./VBoxLinuxAdditions.run
+    cd /vagrant/VBoxGuestAdditions && sh ./VBoxLinuxAdditions.run &> /dev/null
     timedatectl set-timezone Europe/Moscow
     reboot
   SHELL
