@@ -29,6 +29,5 @@ end
     cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
     cd /vagrant/VBoxGuestAdditions && sh ./VBoxLinuxAdditions.run &> /dev/null
     timedatectl set-timezone Europe/Moscow # Укажите ваш часовой пояс
-    reboot
   SHELL
 end
