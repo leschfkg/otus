@@ -6,7 +6,7 @@
 
 
 Версия VirtualBox 7.0.14
-Если через shell устанвливать ПО, то отваливается шара. 
+Если через shell устанвливать ПО, то отваливается VirtualBox Shared Folders, установку ПО через шелл пока убрал.
 
 Обновление ядра:
 
@@ -16,7 +16,7 @@
 
            sudo apt update && sudo apt -y upgrade 
 
-        2.2 Второй способ, перейти на сайт https://kernel.ubuntu.com/mainline/, выбрать директорию с версией ядра linux, на открывшейся странице будут ссылки на .deb файлы. Нам нужно скачать 4 из них:
+        2.2 Второй способ, перейти на сайт https://kernel.ubuntu.com/mainline/, выбрать директорию с версией ядра linux, на открывшейся странице будут ссылки на .deb файлы. Нужно скачать 4 из них:
 
 linux-headers-{version}-generic_{version}.{date}_amd64.deb
 linux-headers-{version}_{version}.{date}_all.deb

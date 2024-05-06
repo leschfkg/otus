@@ -25,10 +25,10 @@ end
 end
   config.vm.provision "shell", inline: <<-SHELL
     apt update -y && apt upgrade -y
-    cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys
+    cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys #Добавьте вашу публичную часть ключа
     cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
     cd /vagrant/VBoxGuestAdditions && sh ./VBoxLinuxAdditions.run &> /dev/null
-    timedatectl set-timezone Europe/Moscow
+    timedatectl set-timezone Europe/Moscow # Укажите ваш часовой пояс
     reboot
   SHELL
 end
