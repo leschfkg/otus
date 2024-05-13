@@ -1,0 +1,2 @@
+ansible_user                 : root
+ansible_ssh_private_key_file : /root/.ssh/my_root_key # укажитепуть к вашему ключу ssh

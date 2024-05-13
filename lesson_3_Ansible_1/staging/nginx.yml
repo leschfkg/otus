@@ -1,0 +1,35 @@
+- name: NGINX | Install and configure NGINX 
+  hosts: web
+  become: yes
+  
+  vars:
+    nginx_listen_port: 8080
+    src_conf: ./templates/nginx.conf.j2
+    dst_conf: /etc/nginx/nginx.conf
+
+  tasks:
+    - name: Linux OS Version
+      debug: var=ansible_os_family
+
+    - block:
+
+       - name: NGINX | Install NGINX
+         apt: name=nginx state=latest update_cache=true
+         notify: restart nginx
+         tags:
+          - nginx-package
+       - name: Copy Config to Servers
+         template: src={{ src_conf }} dest={{ dst_conf }} mode=0644
+         notify: reload nginx
+         tags:
+          - nginx-configuration
+      when: ansible_os_family == "Debian"
+
+  handlers:  
+    - name: restart nginx
+      systemd: name=nginx state=restarted enabled=yes
+    - name: reload nginx
+      systemd: name=nginx state=reloaded
+        
+        
+
