@@ -1,5 +1,6 @@
 [web]
 
+otus-node-0         ansible_host=172.22.23.105
 otus-node-1         ansible_host=172.22.23.106
 otus-node-2         ansible_host=172.22.23.107
 otus-node-3         ansible_host=172.22.23.108
