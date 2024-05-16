@@ -8,7 +8,7 @@ git clone git@github.com:leschfkg/otus.git
 ~~~
 2. перейдите в директорию в зависимости от проверяемого домашнего задания:
 ~~~
- cd otus/lesson_3_{lesson_name}
+ cd otus/lesson_{number}_{lesson_name}
 ~~~
 3. Откроется описание выполнения требуемого урока
 
