@@ -1,4 +1,4 @@
-# Lesson №1 - Where_does_Linux_begin
+# Lesson №2 - Vagrant
 
 ## Getting started
 
