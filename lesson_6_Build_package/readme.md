@@ -1,4 +1,4 @@
-# Lesson №4 - LVM
+# Lesson №6 - Build Package
 
 ## Getting started
 
