@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+$hosts = 1                              # укажите колличество вм
+$disk = 8                               # укажите колличество дисков
+Vagrant.configure("2") do |config|
+  config.vm.provider "virtualbox" do |vm|
+    vm.memory = 8192
+    vm.cpus = 6
+    vm.check_guest_additions=false
+  config.vm.box = "cdaf/UbuntuLVM"
+  config.vm.box_version = "2022.10.05"
+  config.vm.box_check_update = false
+end
+
+(0..$hosts-1).each do |i|
+    config.vm.define "otus-node-#{i}" do |node|
+        node.vm.network "public_network", ip: "172.22.23.#{105+i}", netmask: "255.255.252.0"
+        node.vm.hostname = "otus-node-#{i}.local"
+        node.vm.disk :disk, size: "50GB", primary: true
+        (1..$disk).each do |d|
+          node.vm.disk :disk, size: "20GB", name: "disk-#{d}"
+        end
+    end
+
+end
+  config.vm.provision "shell", inline: <<-SHELL
+    apt update -y && apt upgrade -y
+    apt install zfsutils-linux -y
+    cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys             # Добавьте вашу публичную часть ключа
+    cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
+    timedatectl set-timezone Europe/Moscow                                # Укажите ваш часовой пояс
+  SHELL
+end
