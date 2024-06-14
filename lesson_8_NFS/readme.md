@@ -1092,4 +1092,13 @@ drwxr-xr-x 3 root   root    4096 Jun 13 17:45 ..
 -rw-r--r-- 1 root   root       0 Jun 13  2024 server
 root@otus-node-2 /mnt/nfs #
 ~~~
-Все работает, задание выполнено!
+Перейдем в другого пользователя и проверим есть ли у него права на чтение и запись файлов в примонтированную директорию
+~~~
+root@otus-node-1 /mnt/nfs # su vagrant
+vagrant@otus-node-1 /mnt/nfs $ ll
+ls: cannot open directory '.': Permission denied
+vagrant@otus-node-1 /mnt/nfs $ touch vagrant
+touch: cannot touch 'vagrant': Permission denied
+vagrant@otus-node-1 /mnt/nfs $
+~~~
+Все работает, прав на директорию у не авторизованного пользователя нет. Задание выполнено!
