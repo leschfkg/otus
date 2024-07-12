@@ -1,14 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 $hosts = 1                              # укажите колличество вм
-$disk = 8                               # укажите колличество дисков
+$disk = 0                               # укажите колличество дисков
 Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vm|
-    vm.memory = 8192
+    vm.memory = 8196
     vm.cpus = 6
     vm.check_guest_additions=false
-  config.vm.box = "cdaf/UbuntuLVM"
-  config.vm.box_version = "2022.10.05"
+  config.vm.box = "almalinux/9"
+  config.vm.box_version = "9.3.20231118"
   config.vm.box_check_update = false
 end
 
@@ -24,10 +24,11 @@ end
 
 end
   config.vm.provision "shell", inline: <<-SHELL
-    apt update -y && apt upgrade -y
-    apt install zfsutils-linux -y
     cp -r /vagrant/authorized_keys /root/.ssh/authorized_keys             # Добавьте вашу публичную часть ключа
     cp -r /vagrant/.bashrc /home/vagrant && cp -r /vagrant/.bashrc /root/
     timedatectl set-timezone Europe/Moscow                                # Укажите ваш часовой пояс
+    yum install -y epel-release nginx vim
+    sed -i 's/80/4881/g' /etc/nginx/nginx.conf
+    systemctl start nginx && systemctl status nginx && ss -tlpn | grep 4881
   SHELL
 end
