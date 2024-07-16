@@ -1,0 +1,8 @@
+/.sass-cache/
+/sass/.sass-cache/
+/bourbon/
+/neat/
+.*swp
+.*swo
+overrides/*.scss
+Gemfile.lock

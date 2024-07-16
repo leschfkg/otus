@@ -1,0 +1,12 @@
+
+networks:
+  web:
+    external: true
+services:
+  web:
+    build: ./build
+    restart: always
+    networks:
+      - web
+    ports:
+      - 80:80    
