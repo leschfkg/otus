@@ -8,7 +8,7 @@ git clone git@github.com:leschfkg/otus.git
 ~~~
 2. перейдите в директорию:
 ~~~
- cd otus/lesson_16_Logs
+ cd otus/lesson_17_Logs
 ~~~
 3. измените конфигурцию под себя в файле Vagrantfile
 4. добавьте публичную часть ключа в файл authorized_keys
@@ -27,9 +27,9 @@ vagrant up; vagrant reload
 Стенд протестирован на VirtualBox 7.0.14, Vagrant 2.4, хостовая система: Windows 11 Pro.
 
 # Домашнее задание
-1. в вагранте поднимаем 2 машины web и log
-2. на web поднимаем nginx
-3. на log настраиваем центральный лог сервер на любой системе на выбор
+1. в вагранте поднимаем 2 машины otus-node-0 и otus-node-1
+2. на otus-node-0 поднимаем nginx
+3. на otus-node-1 настраиваем центральный лог сервер на любой системе на выбор
     * journald;
     * rsyslog;
     * elk.
