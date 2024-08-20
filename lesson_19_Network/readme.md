@@ -1,4 +1,4 @@
-# Lesson №18 - Backup
+# Lesson №18 - Network
 
 ## Getting started
 
@@ -8,7 +8,7 @@ git clone git@github.com:leschfkg/otus.git
 ~~~
 2. перейдите в директорию:
 ~~~
- cd otus/lesson_18_Backup
+ cd otus/lesson_19_Network
 ~~~
 3. измените конфигурцию под себя в файле Vagrantfile
 4. добавьте публичную часть ключа в файл authorized_keys
