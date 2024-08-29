@@ -10,6 +10,17 @@ MACHINES = {
                 ]
   },
 
+  :inetRouter2 => {
+    :box_name => "cdaf/UbuntuLVM",
+    :vm_name => "inetRouter2",
+    #:public => {:ip => "10.10.10.1", :adapter => 1},
+    :net => [
+                #ip, adpter, netmask, virtualbox__intnet
+                ["192.168.255.3", 2, "255.255.255.248",  "router-net"],
+                ["192.168.50.10", 8, "255.255.255.0"],
+            ]
+},
+
   :centralRouter => {
         :box_name => "cdaf/UbuntuLVM",
         :vm_name => "centralRouter",
